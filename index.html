@@ -1,0 +1,661 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>G.R.V Gopal | IT Professional</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <style>
+        /* --- PROFESSIONAL THEME VARIABLES --- */
+        :root {
+            --primary: #0f2e54;       /* Navy Blue */
+            --secondary: #2a6fdb;     /* Bright Blue */
+            --accent: #eef2f6;        /* Light Grey/Blue */
+            --text-dark: #1e293b;     
+            --text-light: #64748b;    
+            --white: #ffffff;
+            --shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            --shadow-hover: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: var(--accent);
+            color: var(--text-dark);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* --- UTILITIES --- */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 2.25rem;
+            margin-bottom: 3rem;
+            color: var(--primary);
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+            width: 100%;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 60px;
+            height: 4px;
+            background: var(--secondary);
+            margin: 15px auto 0;
+            border-radius: 2px;
+        }
+
+        /* --- NAVIGATION --- */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: var(--white);
+            box-shadow: 0 2px 15px rgba(0,0,0,0.05);
+            z-index: 1000;
+        }
+
+        .nav-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            letter-spacing: -0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-dark);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--secondary);
+        }
+
+        /* --- HERO SECTION (UPDATED FOR PHOTO) --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, var(--white) 50%, #f0f7ff 100%);
+            padding-top: 80px;
+        }
+
+        .hero-content {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 60px;
+        }
+
+        .hero-text {
+            flex: 1;
+            max-width: 600px;
+        }
+
+        .hero-img-container {
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            position: relative;
+        }
+
+        /* Profile Photo Styling */
+        .profile-img {
+    width: 380px;
+    height: 380px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 50%;
+}
+
+        /* Decorative Background Blob */
+        .blob {
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: var(--secondary);
+            border-radius: 50%;
+            opacity: 0.1;
+            z-index: 1;
+            top: 20px;
+            right: -20px;
+            filter: blur(40px);
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-15px); }
+            100% { transform: translateY(0px); }
+        }
+
+        .badge {
+            display: inline-block;
+            background: #e0e7ff;
+            color: var(--secondary);
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 24px;
+        }
+
+        .hero h1 {
+            font-size: 3.5rem;
+            line-height: 1.2;
+            margin-bottom: 24px;
+            color: var(--primary);
+        }
+
+        .hero p {
+            font-size: 1.15rem;
+            color: var(--text-light);
+            margin-bottom: 32px;
+        }
+
+        .btn {
+            display: inline-block;
+            padding: 14px 32px;
+            background-color: var(--primary);
+            color: white;
+            text-decoration: none;
+            border-radius: 6px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 12px rgba(15, 46, 84, 0.2);
+        }
+
+        .btn:hover {
+            background-color: var(--secondary);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(42, 111, 219, 0.3);
+        }
+
+        /* --- CERTIFICATES SECTION --- */
+        .certificates-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 24px;
+        }
+
+        .cert-card {
+            background: var(--white);
+            padding: 24px;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: flex-start;
+            gap: 16px;
+        }
+
+        .cert-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+            border-color: var(--secondary);
+        }
+
+        .cert-icon {
+            background: #f0f7ff;
+            color: var(--secondary);
+            width: 50px;
+            height: 50px;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            flex-shrink: 0;
+        }
+
+        .cert-info h4 {
+            color: var(--primary);
+            margin-bottom: 4px;
+            font-size: 1.1rem;
+        }
+
+        .cert-info .issuer {
+            font-weight: 600;
+            color: var(--text-dark);
+            font-size: 0.9rem;
+        }
+
+        .cert-info .date {
+            color: var(--text-light);
+            font-size: 0.85rem;
+            margin-top: 4px;
+            display: block;
+        }
+
+        /* --- SKILLS SECTION --- */
+        .skills-container {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 40px;
+            box-shadow: var(--shadow);
+        }
+
+        .skills-category h3 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            padding-bottom: 10px;
+        }
+
+        .tags-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-bottom: 40px;
+        }
+
+        .skill-tag {
+            background: #f1f5f9;
+            color: var(--text-dark);
+            padding: 10px 20px;
+            border-radius: 50px;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: 0.2s;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* --- PROJECTS SECTION --- */
+        .project-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: all 0.3s ease;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .project-header {
+            background: var(--primary);
+            padding: 20px;
+            color: white;
+            text-align: center;
+        }
+
+        .project-body {
+            padding: 24px;
+            flex-grow: 1;
+        }
+
+        .project-body h3 {
+            color: var(--primary);
+            margin-bottom: 12px;
+        }
+
+        .project-body p {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .tech-stack span {
+            display: inline-block;
+            font-size: 0.75rem;
+            background: #eef2f6;
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 4px;
+            margin-right: 6px;
+            font-weight: 600;
+        }
+
+        /* --- CONTACT SECTION --- */
+        .contact-box {
+            background: var(--primary);
+            color: white;
+            border-radius: 20px;
+            padding: 60px 20px;
+            text-align: center;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .contact-box h2 {
+            color: white;
+            margin-bottom: 16px;
+        }
+        
+        .contact-box p {
+            color: rgba(255,255,255,0.8);
+            margin-bottom: 32px;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 14px 32px;
+            border-radius: 6px;
+            text-decoration: none;
+            font-weight: 700;
+            display: inline-block;
+            transition: 0.3s;
+        }
+
+        .btn-white:hover {
+            background: #f1f5f9;
+            transform: scale(1.05);
+        }
+
+        .footer-socials {
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .footer-socials a {
+            color: var(--text-light);
+            font-size: 1.5rem;
+            transition: 0.3s;
+        }
+
+        .footer-socials a:hover {
+            color: var(--primary);
+        }
+
+        footer {
+            text-align: center;
+            padding: 40px 0;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        /* --- MOBILE RESPONSIVE --- */
+        @media (max-width: 900px) {
+            .hero-content {
+                flex-direction: column-reverse;
+                text-align: center;
+                gap: 40px;
+            }
+            .hero h1 { font-size: 2.5rem; }
+            .nav-links { display: none; }
+            .profile-img { width: 280px; height: 280px; }
+            .blob { width: 300px; height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav>
+        <div class="container nav-content">
+            <div class="logo">G.R.V GOPAL</div> 
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#certificates">Certifications</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#projects">Projects</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <section id="about" class="hero">
+        <div class="container hero-content">
+            
+            <div class="hero-text" data-aos="fade-right">
+                <span class="badge">IT Professional & MCA Student</span>
+                <h1>G.R.V Gopal</h1>
+                <p>
+                    Dedicated IT professional expert in <strong>Network Configuration</strong>, 
+                    <strong>System Administration</strong>, and <strong>Python Development</strong>. 
+                    I build reliable IT infrastructures and efficient software solutions.
+                </p>
+                <div>
+                    <a href="#contact" class="btn">Hire Me</a>
+                    <a href="#projects" style="margin-left: 20px; color: var(--primary); font-weight: 600; text-decoration: none;">View Projects →</a>
+                </div>
+            </div>
+
+            <div class="hero-img-container" data-aos="fade-left">
+                <div class="blob"></div>
+                <img src="photo.jpg" 
+                     onerror="this.src='https://lh3.googleusercontent.com/d/1tgk-8huJsX9ArOqZb8ychQEAGN3wNvFL'"
+                     alt="G.R.V Gopal" 
+                     class="profile-img">
+            </div>
+
+        </div>
+    </section>
+
+    <section id="certificates" class="section-padding">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Professional Certifications</h2>
+            <div class="certificates-grid">
+                
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="cert-icon"><i class="fas fa-shield-alt"></i></div>
+                    <div class="cert-info">
+                        <h4>Network Support & Security</h4>
+                        <span class="issuer">Cisco</span>
+                        <span class="date">Issued Sep 2024</span>
+                    </div>
+                </div>
+
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="150">
+                    <div class="cert-icon"><i class="fas fa-server"></i></div>
+                    <div class="cert-info">
+                        <h4>SysAdmin & IT Infrastructure</h4>
+                        <span class="issuer">Google & Coursera</span>
+                        <span class="date">Issued Aug 2024</span>
+                    </div>
+                </div>
+
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="cert-icon"><i class="fab fa-python"></i></div>
+                    <div class="cert-info">
+                        <h4>Python for Data Science & AI</h4>
+                        <span class="issuer">IBM & Coursera</span>
+                        <span class="date">Issued Feb 2024</span>
+                    </div>
+                </div>
+
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="250">
+                    <div class="cert-icon"><i class="fas fa-headset"></i></div>
+                    <div class="cert-info">
+                        <h4>Technical Support Fundamentals</h4>
+                        <span class="issuer">Google & Coursera</span>
+                        <span class="date">Issued July 2024</span>
+                    </div>
+                </div>
+
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="300">
+                    <div class="cert-icon"><i class="fas fa-microchip"></i></div>
+                    <div class="cert-info">
+                        <h4>Computer Hardware Basics</h4>
+                        <span class="issuer">Cisco</span>
+                        <span class="date">Issued June 2024</span>
+                    </div>
+                </div>
+
+                <div class="cert-card" data-aos="fade-up" data-aos-delay="350">
+                    <div class="cert-icon"><i class="fas fa-robot"></i></div>
+                    <div class="cert-info">
+                        <h4>Gen AI Tools for Python</h4>
+                        <span class="issuer">Skillsoft</span>
+                        <span class="date">Issued Apr 2024</span>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="skills" class="section-padding" style="background-color: #f8fafc;">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Skills & Expertise</h2>
+            
+            <div class="skills-container" data-aos="zoom-in">
+                <div class="skills-category">
+                    <h3>Technical Proficiency</h3>
+                    <div class="tags-wrapper">
+                        <span class="skill-tag">Network Configuration</span>
+                        <span class="skill-tag">System Administration</span>
+                        <span class="skill-tag">Python (Flask)</span>
+                        <span class="skill-tag">Hardware Deployment</span>
+                        <span class="skill-tag">Operating Systems (Win/Linux)</span>
+                        <span class="skill-tag">IoT Systems</span>
+                    </div>
+                </div>
+
+                <div class="skills-category">
+                    <h3>Professional Competencies</h3>
+                    <div class="tags-wrapper" style="margin-bottom: 0;">
+                        <span class="skill-tag">Effective Leadership</span>
+                        <span class="skill-tag">Technical Writing</span>
+                        <span class="skill-tag">Problem Solving</span>
+                        <span class="skill-tag">Corporate Communications</span>
+                        <span class="skill-tag">Analytical Thinking</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects" class="section-padding">
+        <div class="container">
+            <h2 class="section-title" data-aos="fade-up">Key Projects</h2>
+            <div class="certificates-grid">
+                
+                <div class="project-card" data-aos="fade-up">
+                    <div class="project-header">
+                        <i class="fas fa-language fa-2x"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3>Multilevel Text Translator</h3>
+                        <p>A Python Flask web application that translates text across multiple languages with high accuracy.</p>
+                        <div class="tech-stack">
+                            <span>Python</span>
+                            <span>Flask</span>
+                            <span>API</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="100">
+                    <div class="project-header">
+                        <i class="fas fa-lightbulb fa-2x"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3>IoT Light Detection</h3>
+                        <p>Automated system for light detection to optimize energy consumption using hardware sensors.</p>
+                        <div class="tech-stack">
+                            <span>IoT</span>
+                            <span>Sensors</span>
+                            <span>Automation</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="project-card" data-aos="fade-up" data-aos-delay="200">
+                    <div class="project-header">
+                        <i class="fas fa-file-invoice fa-2x"></i>
+                    </div>
+                    <div class="project-body">
+                        <h3>Advance Billing System</h3>
+                        <p>Comprehensive management tool for handling corporate billing, invoicing, and data storage.</p>
+                        <div class="tech-stack">
+                            <span>Management</span>
+                            <span>Database</span>
+                            <span>Admin</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="section-padding">
+        <div class="container">
+            <div class="contact-box" data-aos="zoom-in">
+                <h2>Let's Work Together</h2>
+                <p>I am available for immediate joining in Network, System Admin, or Development roles.</p>
+                
+                <a href="mailto:grvgopal130504@gmail.com" class="btn-white">
+                    <i class="fas fa-envelope"></i> grvgopal130504@gmail.com
+                </a>
+                
+                <br><br>
+                <div style="font-size: 1.1rem;">
+                    <i class="fas fa-phone"></i> +91 9842017634
+                </div>
+            </div>
+
+            <div class="footer-socials">
+                <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 G.R.V Gopal. All Rights Reserved.</p>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 800,
+            once: true,
+            offset: 100
+        });
+    </script>
+</body>
+</html>
