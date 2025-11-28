@@ -7,15 +7,14 @@
     
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
 
     <style>
         /* --- PROFESSIONAL THEME VARIABLES --- */
         :root {
-            --primary: #0f2e54;       /* Navy Blue */
-            --secondary: #2a6fdb;     /* Bright Blue */
-            --accent: #eef2f6;        /* Light Grey/Blue */
+            --primary: #0f2e54;       
+            --secondary: #2a6fdb;     
+            --accent: #eef2f6;        
             --text-dark: #1e293b;     
             --text-light: #64748b;    
             --white: #ffffff;
@@ -35,7 +34,7 @@
             background-color: var(--accent);
             color: var(--text-dark);
             line-height: 1.6;
-            overflow-x: hidden;
+            overflow-x: hidden; /* Prevent horizontal scroll */
         }
 
         /* --- UTILITIES --- */
@@ -43,6 +42,7 @@
             max-width: 1100px;
             margin: 0 auto;
             padding: 0 24px;
+            width: 100%;
         }
 
         .section-padding {
@@ -85,6 +85,7 @@
             justify-content: space-between;
             align-items: center;
             height: 70px;
+            position: relative;
         }
 
         .logo {
@@ -92,6 +93,7 @@
             font-weight: 700;
             color: var(--primary);
             letter-spacing: -0.5px;
+            z-index: 1002;
         }
 
         .nav-links {
@@ -112,13 +114,23 @@
             color: var(--secondary);
         }
 
-        /* --- HERO SECTION (UPDATED FOR PHOTO) --- */
+        /* Mobile Menu Button - Hidden by default */
+        .hamburger {
+            display: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--primary);
+            z-index: 1002;
+        }
+
+        /* --- HERO SECTION --- */
         .hero {
             min-height: 100vh;
             display: flex;
             align-items: center;
             background: linear-gradient(135deg, var(--white) 50%, #f0f7ff 100%);
             padding-top: 80px;
+            padding-bottom: 40px; 
         }
 
         .hero-content {
@@ -140,16 +152,18 @@
             position: relative;
         }
 
-        /* Profile Photo Styling */
         .profile-img {
-    width: 380px;
-    height: 380px;
-    object-fit: cover;
-    object-position: top;
-    border-radius: 50%;
-}
+            width: 380px;
+            height: 380px;
+            object-fit: cover;
+            object-position: top;
+            border-radius: 50%;
+            position: relative;
+            z-index: 2;
+            border: 5px solid rgba(255,255,255,0.8);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
 
-        /* Decorative Background Blob */
         .blob {
             position: absolute;
             width: 400px;
@@ -161,6 +175,7 @@
             top: 20px;
             right: -20px;
             filter: blur(40px);
+            animation: float 6s ease-in-out infinite;
         }
 
         @keyframes float {
@@ -214,7 +229,8 @@
         /* --- CERTIFICATES SECTION --- */
         .certificates-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            /* Changed minmax to 280px to fit smaller mobile screens */
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
             gap: 24px;
         }
 
@@ -354,6 +370,7 @@
             border-radius: 4px;
             margin-right: 6px;
             font-weight: 600;
+            margin-bottom: 5px; /* Added for wrapping */
         }
 
         /* --- CONTACT SECTION --- */
@@ -386,6 +403,8 @@
             font-weight: 700;
             display: inline-block;
             transition: 0.3s;
+            max-width: 100%;
+            word-wrap: break-word; /* Ensure long emails don't overflow */
         }
 
         .btn-white:hover {
@@ -417,17 +436,109 @@
             font-size: 0.9rem;
         }
 
-        /* --- MOBILE RESPONSIVE --- */
+        /* --- RESPONSIVE MEDIA QUERIES --- */
+        
+        /* Tablet & Mobile (Below 900px) */
         @media (max-width: 900px) {
+            .hamburger {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 70px;
+                right: -100%; /* Hidden by default */
+                background: var(--white);
+                flex-direction: column;
+                width: 100%;
+                height: auto;
+                text-align: center;
+                padding: 20px 0;
+                box-shadow: 0 10px 10px rgba(0,0,0,0.1);
+                transition: right 0.4s ease;
+                gap: 25px;
+            }
+
+            .nav-links.active {
+                right: 0; /* Slide in */
+            }
+
             .hero-content {
-                flex-direction: column-reverse;
+                flex-direction: column-reverse; /* Text bottom, image top */
                 text-align: center;
                 gap: 40px;
+                padding-top: 20px;
             }
-            .hero h1 { font-size: 2.5rem; }
-            .nav-links { display: none; }
-            .profile-img { width: 280px; height: 280px; }
-            .blob { width: 300px; height: 300px; }
+
+            .hero-text {
+                margin: 0 auto;
+            }
+
+            .hero h1 { 
+                font-size: 2.8rem; 
+            }
+
+            .profile-img { 
+                width: 300px; 
+                height: 300px; 
+            }
+            
+            .blob { 
+                width: 320px; 
+                height: 320px; 
+            }
+        }
+
+        /* Mobile (Below 600px) */
+        @media (max-width: 600px) {
+            .section-padding {
+                padding: 50px 0;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+                margin-bottom: 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .profile-img { 
+                width: 250px; 
+                height: 250px; 
+            }
+            
+            .blob { 
+                width: 270px; 
+                height: 270px; 
+            }
+
+            .skills-container {
+                padding: 25px;
+            }
+
+            .cert-card {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+                margin-bottom: 10px;
+            }
+
+            .hero-text div a:last-child {
+                display: block;
+                margin-left: 0 !important;
+                margin-top: 10px;
+            }
         }
     </style>
 </head>
@@ -436,12 +547,17 @@
     <nav>
         <div class="container nav-content">
             <div class="logo">G.R.V GOPAL</div> 
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#certificates">Certifications</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#contact">Contact</a></li>
+            
+            <div class="hamburger" onclick="toggleMenu()">
+                <i class="fas fa-bars"></i>
+            </div>
+
+            <ul class="nav-links" id="navLinks">
+                <li><a href="#about" onclick="toggleMenu()">About</a></li>
+                <li><a href="#certificates" onclick="toggleMenu()">Certifications</a></li>
+                <li><a href="#skills" onclick="toggleMenu()">Skills</a></li>
+                <li><a href="#projects" onclick="toggleMenu()">Projects</a></li>
+                <li><a href="#contact" onclick="toggleMenu()">Contact</a></li>
             </ul>
         </div>
     </nav>
@@ -646,7 +762,7 @@
     </section>
 
     <footer>
-        <p>&copy; 2025 G.R.V Gopal. All Rights Reserved.</p>
+        <p>© 2025 G.R.V Gopal. All Rights Reserved.</p>
     </footer>
 
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
@@ -656,6 +772,12 @@
             once: true,
             offset: 100
         });
+
+        // Toggle Mobile Menu
+        function toggleMenu() {
+            const navLinks = document.getElementById('navLinks');
+            navLinks.classList.toggle('active');
+        }
     </script>
 </body>
 </html>
